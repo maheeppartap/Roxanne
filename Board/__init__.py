@@ -7,6 +7,7 @@ class Board:
     def __init__(self):
         self.board = chess.Board()
         self.moves = []
+        self.rendered = False
         pass
 
     def _legal_moves(self):
@@ -40,7 +41,8 @@ class Board:
         return self.board.can_claim_fifty_moves()
 
     def _print_state(self):
-        app = Utils.QApplication([])
-        window = Utils.DisplayState(Gamestate=self.board)
-        window.show()
-        app.exec()
+        self.app = Utils.QApplication([])
+        self.window = Utils.DisplayState(Gamestate=self.board)
+        self.window.show()
+        self.app.exec()
+        self.rendered = True
