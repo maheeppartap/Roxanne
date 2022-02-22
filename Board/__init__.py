@@ -19,8 +19,11 @@ class Board:
     def validate_move(self, move) -> bool:
         return move in self.legal_moves()
 
-    def make_move(self, move: str) -> bool:
+    def make_move_in_board(self, move: str) -> bool:
         m = chess.Move.from_uci(move)
+        return self._make_move_in_board(m)
+
+    def _make_move_in_board(self, m: chess.Move) -> bool:
         if self.validate_move(m):
             self.board.push(m)
             self.moves.append(m)
