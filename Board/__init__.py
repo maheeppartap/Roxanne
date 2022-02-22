@@ -10,39 +10,42 @@ class Board:
         self.rendered = False
         pass
 
-    def _legal_moves(self):
+    def legal_moves(self):
         return self.board.legal_moves
 
-    def _num_legal_moves(self):
+    def num_legal_moves(self):
         return self.board.legal_moves.count()
 
-    def _validate_move(self, move) -> bool:
-        return move in self._legal_moves()
+    def validate_move(self, move) -> bool:
+        return move in self.legal_moves()
 
-    def _make_move(self, move: str) -> bool:
+    def make_move(self, move: str) -> bool:
         m = chess.Move.from_uci(move)
-        if self._validate_move(m):
+        if self.validate_move(m):
             self.board.push(m)
             self.moves.append(m)
             return True
         return False
 
-    def _undo_move(self) -> bool:
+    def undo_move(self) -> bool:
         if len(self.moves) == 0:
             return False
         self.board.pop()
         self.moves.pop()
         return True
 
-    def _check_stalemate(self) -> bool:
+    def check_stalemate(self) -> bool:
         return self.board.is_stalemate()
 
-    def _can_claim_fifty_moves(self) -> bool:
+    def can_claim_fifty_moves(self) -> bool:
         return self.board.can_claim_fifty_moves()
 
-    def _print_state(self):
-        self.app = Utils.QApplication([])
-        self.window = Utils.DisplayState(Gamestate=self.board)
-        self.window.show()
-        self.app.exec()
-        self.rendered = True
+    def print_state(self):
+        app = Utils.QApplication([])
+        window = Utils.DisplayState(Gamestate=self.board)
+        window.show()
+        app.exec()
+
+
+    # def refresh_screen(self):
+        # self.window.paintEvent(None, GameState=self.board)
