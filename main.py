@@ -10,7 +10,11 @@ import Search.RandomMove
 def game_loop(b, opponent):
     while not b.check_stalemate():
         move = input("Enter your move: ")
-        b.make_move_in_board(move)
+        try:
+            b.make_move_in_board(move)
+        except ValueError:
+            print("Illegal move, try again")
+            continue
         opponent.make_move(b)
 
 
