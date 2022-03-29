@@ -2,6 +2,7 @@ import chess
 import chess.svg
 import Board
 from threading import Thread
+from Heuristic import MaterialAdvantage
 
 import Opponent
 import Search.RandomMove
