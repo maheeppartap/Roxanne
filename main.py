@@ -9,7 +9,10 @@ import Search.RandomMove
 
 
 def game_loop(b, opponent):
+    # material_advantage_calc = MaterialAdvantage.MaterialAdvantage(b)
     while not b.check_stalemate():
+        # print("Material advantage for player")
+        # print(str(material_advantage_calc.score(b)))
         move = input("Enter your move: ")
         try:
             b.make_move_in_board(move)
