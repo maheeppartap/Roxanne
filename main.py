@@ -5,10 +5,14 @@ from threading import Thread
 
 import Opponent
 import Search.RandomMove
+from Heuristic import SpaceAdvantage
 
 
 def game_loop(b, opponent):
+    space_advantage_calc = SpaceAdvantage.SpaceAdvantage(b)
     while not b.check_stalemate():
+        print("Space advantage for player")
+        print(str(space_advantage_calc.score(b)))
         move = input("Enter your move: ")
         try:
             b.make_move_in_board(move)
