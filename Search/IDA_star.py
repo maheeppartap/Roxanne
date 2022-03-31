@@ -10,7 +10,6 @@ class IDA_star(Search.Search):
         self.heuristic = heuristic
 
     def _decision(self, board: Board.Board, depth: int):
-
         # Base case, return score, will get it working with Reece's heuristic in another branch once merged into main
         if depth == 0:
             return self.heuristic.score(board)
@@ -23,11 +22,16 @@ class IDA_star(Search.Search):
         for move in possible_moves_list:
             board._make_move_in_board(move)
             moves_score_combo[move] = self._decision(board, depth - 1)
-            board.board.pop()
+            board.undo_move()
 
-        max_key = max(moves_score_combo, key=moves_score_combo.get)
+        print(f'Scores: {moves_score_combo}')
+        max_key = min(moves_score_combo, key=moves_score_combo.get)
 
+        if depth == self.depth:
+            return (max_key, moves_score_combo[max_key])
         return moves_score_combo[max_key]
 
     def decision(self, board: Board.Board):
         best_move = self._decision(board, self.depth)
+        print(f'Best move: {best_move} with score: {best_move[1]}')
+        return best_move[0]

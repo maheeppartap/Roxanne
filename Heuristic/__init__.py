@@ -7,6 +7,3 @@ class Heuristic:
 
     def score(self, board: Board.Board):
         pass
-
-    def score(self, board: Board.board):
-        pass

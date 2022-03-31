@@ -6,6 +6,7 @@ from Heuristic import MaterialAdvantage
 
 import Opponent
 import Search.RandomMove
+import Search.IDA_star
 
 
 def game_loop(b, opponent):
@@ -24,8 +25,8 @@ def game_loop(b, opponent):
 
 if __name__ == '__main__':
     b = Board.Board()
-
-    search_algo = Search.RandomMove.RandomMove()
+    heur = MaterialAdvantage.MaterialAdvantage(b)
+    search_algo = Search.IDA_star.IDA_star(node_expansion=None, heuristic=heur, depth=1)
     op = Opponent.Opponent(search_algo=search_algo, search_heuristic=None, board=b)
     # Seperate the logic from rendering engine
     thread1 = Thread(target=game_loop, args=(b, op))
