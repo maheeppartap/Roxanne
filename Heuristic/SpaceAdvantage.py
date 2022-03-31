@@ -11,13 +11,6 @@ class SpaceAdvantage(Heuristic.Heuristic):
 
     def compute_space_advantage(self, board: Board.Board):
         # Defining space advantage as difference of legal moves between players
-        legal_moves = board.legal_moves()
-        print(legal_moves)
-        print("Count: " + str(legal_moves.count()))
-        print(type(legal_moves))
-        for move in legal_moves:
-            print(move)
-
-        board_copy = copy.deepcopy(board)
-        board_copy = board_copy.get_mirror()
-        return -1
+        num_legal_moves = board.num_legal_moves()
+        num_opponent_legal_moves = board.num_opponent_legal_moves()
+        return num_legal_moves - num_opponent_legal_moves
