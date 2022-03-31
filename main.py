@@ -2,6 +2,7 @@ import chess
 import chess.svg
 import Board
 from threading import Thread
+from Heuristic import MaterialAdvantage
 
 import Opponent
 import Search.RandomMove
@@ -10,9 +11,12 @@ from Heuristic import SpaceAdvantage
 
 def game_loop(b, opponent):
     space_advantage_calc = SpaceAdvantage.SpaceAdvantage(b)
+    # material_advantage_calc = MaterialAdvantage.MaterialAdvantage(b)
     while not b.check_stalemate():
         print("Space advantage for player")
         print(str(space_advantage_calc.score(b)))
+        # print("Material advantage for player")
+        # print(str(material_advantage_calc.score(b)))
         move = input("Enter your move: ")
         try:
             b.make_move_in_board(move)

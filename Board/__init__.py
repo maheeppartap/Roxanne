@@ -45,6 +45,12 @@ class Board:
     def can_claim_fifty_moves(self) -> bool:
         return self.board.can_claim_fifty_moves()
 
+    def get_active_pieces(self):
+        return self.board.piece_map()
+
+    def get_turn(self):
+        return self.board.turn
+
     def print_state(self):
         app = Utils.QApplication([])
         window = Utils.DisplayState(Gamestate=self.board)
