@@ -6,13 +6,12 @@ from Heuristic import MaterialAdvantage
 
 import Opponent
 import Search.RandomMove
+from Heuristic import SpaceAdvantage
 
 
 def game_loop(b, opponent):
-    # material_advantage_calc = MaterialAdvantage.MaterialAdvantage(b)
+    # space_advantage_calc = SpaceAdvantage.SpaceAdvantage(b)
     while not b.check_stalemate():
-        # print("Material advantage for player")
-        # print(str(material_advantage_calc.score(b)))
         move = input("Enter your move: ")
         try:
             b.make_move_in_board(move)
@@ -20,6 +19,8 @@ def game_loop(b, opponent):
             print("Illegal move, try again")
             continue
         opponent.make_move(b)
+        # print("Space advantage for player")
+        # print(str(space_advantage_calc.score(b)))
 
 
 if __name__ == '__main__':

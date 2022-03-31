@@ -1,6 +1,5 @@
 import Board
 
-
 class Heuristic:
     def __init__(self, board: Board.Board):
         self.board = board
