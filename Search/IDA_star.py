@@ -10,13 +10,16 @@ class IDA_star(Search.Search):
         self.heuristic = heuristic
 
     def _decision(self, board: Board.Board, depth: int):
+
+        # Base case, return score, will get it working with Reece's heuristic in another branch once merged into main
         if depth == 0:
             return self.heuristic.score(board)
         possible_moves_list = list(board.legal_moves())
 
+        # This is for debugging purposes
         moves_score_combo = {}
 
-        # Expand nodes - room for improvement given too much redundancy
+        # Expand tree nodes - room for improvement given too much redundancy
         for move in possible_moves_list:
             board._make_move_in_board(move)
             moves_score_combo[move] = self._decision(board, depth - 1)
