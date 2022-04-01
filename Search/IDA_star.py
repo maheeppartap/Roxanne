@@ -28,7 +28,7 @@ class IDA_star(Search.Search):
         max_key = min(moves_score_combo, key=moves_score_combo.get)
 
         if depth == self.depth:
-            return (max_key, moves_score_combo[max_key])
+            return max_key, moves_score_combo[max_key]
         return moves_score_combo[max_key]
 
     def decision(self, board: Board.Board):
