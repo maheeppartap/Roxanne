@@ -11,14 +11,13 @@ from Heuristic import NumberOfChecks
 
 
 def game_loop(b, opponent):
-    number_of_checks_calc = NumberOfChecks.NumberOfChecks(b)
+    # number_of_checks_calc = NumberOfChecks.NumberOfChecks(b)
     while not b.check_stalemate():
         move = input("Enter your move: ")
         try:
             b.make_move_in_board(move)
-            print("Number of checks for player")
-            print(number_of_checks_calc.score(b))
-            cont = input("Press anything to continue: ")
+            # print("Number of checks for player")
+            # print(number_of_checks_calc.score(b))
         except ValueError:
             print("Illegal move, try again")
             continue
