@@ -36,6 +36,9 @@ class Board:
         except:
             return False
 
+    def num_checks(self):
+        return sum(self.board.checkers().tolist())
+
     def validate_move(self, move) -> bool:
         return move in list(self.legal_moves())
 

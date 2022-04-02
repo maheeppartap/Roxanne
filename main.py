@@ -7,20 +7,21 @@ from Heuristic import MaterialAdvantage
 import Opponent
 import Search.RandomMove
 from Heuristic import SpaceAdvantage
+from Heuristic import NumberOfChecks
 
 
 def game_loop(b, opponent):
-    # space_advantage_calc = SpaceAdvantage.SpaceAdvantage(b)
+    # number_of_checks_calc = NumberOfChecks.NumberOfChecks(b)
     while not b.check_stalemate():
         move = input("Enter your move: ")
         try:
             b.make_move_in_board(move)
+            # print("Number of checks for player")
+            # print(number_of_checks_calc.score(b))
         except ValueError:
             print("Illegal move, try again")
             continue
         opponent.make_move(b)
-        # print("Space advantage for player")
-        # print(str(space_advantage_calc.score(b)))
 
 
 if __name__ == '__main__':
