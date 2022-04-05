@@ -74,12 +74,17 @@ class Board:
     def get_turn(self):
         return self.board.turn
 
+    def is_game_over(self):
+        return self.board.is_game_over()
+
+    def is_checkmate(self):
+        return self.board.is_checkmate()
+
     def print_state(self):
         app = Utils.QApplication([])
         window = Utils.DisplayState(Gamestate=self.board)
         window.show()
         app.exec()
-
 
     # def refresh_screen(self):
         # self.window.paintEvent(None, GameState=self.board)

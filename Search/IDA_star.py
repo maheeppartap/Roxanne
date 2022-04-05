@@ -1,6 +1,7 @@
 import Search
 import Board
 import operator
+import random
 
 
 class IDA_star(Search.Search):
@@ -25,7 +26,14 @@ class IDA_star(Search.Search):
             board.undo_move()
 
         print(f'Scores: {moves_score_combo}')
-        max_key = min(moves_score_combo, key=moves_score_combo.get)
+        max_key = max(moves_score_combo,key=moves_score_combo.get)  # changing this from min to max seems to make AI do the right thing
+
+        # Pick random move from equal scoring moves
+        max_entries = {}
+        for key in moves_score_combo:
+            if moves_score_combo.get(max_key) == moves_score_combo.get(key):
+                max_entries[key] = moves_score_combo.get(key)
+        max_key = random.choice(list(max_entries))
 
         if depth == self.depth:
             return max_key, moves_score_combo[max_key]

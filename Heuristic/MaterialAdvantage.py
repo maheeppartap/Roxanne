@@ -26,7 +26,7 @@ class MaterialAdvantage(Heuristic.Heuristic):
                 black_score += piece_value
 
         if board.get_turn() is chess.WHITE:
-            material_advantage = white_score - black_score
+            material_advantage = -(white_score - black_score)
         else:
-            material_advantage = black_score - white_score
+            material_advantage = -(black_score - white_score)
         return material_advantage
