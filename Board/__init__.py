@@ -1,4 +1,5 @@
 import chess
+import copy
 
 import Utils
 
@@ -15,6 +16,28 @@ class Board:
 
     def num_legal_moves(self):
         return self.board.legal_moves.count()
+
+    def opponent_legal_moves(self):
+        self._flip_turn()
+        opponent_legal_moves = copy.deepcopy(self.board.legal_moves)
+        self._flip_turn()
+        return opponent_legal_moves
+
+    def num_opponent_legal_moves(self):
+        self._flip_turn()
+        num_opponent_legal_moves = self.num_legal_moves()
+        self._flip_turn()
+        return num_opponent_legal_moves
+
+    def _flip_turn(self):
+        try:
+            self.board.turn = not self.get_turn()
+            return True
+        except:
+            return False
+
+    def num_checks(self):
+        return sum(self.board.checkers().tolist())
 
     def validate_move(self, move) -> bool:
         return move in list(self.legal_moves())
