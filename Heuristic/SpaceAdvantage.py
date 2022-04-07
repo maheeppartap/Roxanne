@@ -13,4 +13,4 @@ class SpaceAdvantage(Heuristic.Heuristic):
         # Defining space advantage as difference of legal moves between players
         num_legal_moves = board.num_legal_moves()
         num_opponent_legal_moves = board.num_opponent_legal_moves()
-        return num_legal_moves - num_opponent_legal_moves
+        return -(num_legal_moves - num_opponent_legal_moves)

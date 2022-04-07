@@ -25,8 +25,8 @@ class IDA_star(Search.Search):
             moves_score_combo[move] = self._decision(board, depth - 1)
             board.undo_move()
 
-        print(f'Scores: {moves_score_combo}')
-        max_key = max(moves_score_combo,key=moves_score_combo.get)  # changing this from min to max seems to make AI do the right thing
+        # print(f'Scores: {moves_score_combo}')
+        max_key = max(moves_score_combo,key=moves_score_combo.get)
 
         # Pick random move from equal scoring moves
         max_entries = {}
@@ -41,5 +41,5 @@ class IDA_star(Search.Search):
 
     def decision(self, board: Board.Board):
         best_move = self._decision(board, self.depth)
-        print(f'Best move: {best_move} with score: {best_move[1]}')
+        # print(f'Best move: {best_move} with score: {best_move[1]}')
         return best_move[0]
