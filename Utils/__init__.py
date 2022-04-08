@@ -11,7 +11,7 @@ class DisplayState(QWidget):
         self.setGeometry(100, 100, 1100, 1100)
 
         self.widgetSvg = QSvgWidget(parent=self)
-        self.widgetSvg.setGeometry(10, 10, 1080, 1080)
+        self.widgetSvg.setGeometry(10, 10, 900, 900)
 
         self.chessboard = Gamestate
 
