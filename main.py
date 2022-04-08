@@ -22,7 +22,7 @@ def game_loop(b, opponent, opponent1):
     output_value = 3
     while not b.check_stalemate():
         # move = input("Enter your move: ")
-        # confirm_next_move = input("Press enter for opp to make next move")
+        confirm_next_move = input("Press enter for opp to make next move")
         try:
             opponent.make_move(b)
             # b.make_move_in_board(move)
@@ -39,7 +39,7 @@ def game_loop(b, opponent, opponent1):
             print("Opponent: Illegal move, try again")
             continue
         # time.sleep(1)
-        # confirm_next_move = input("Press enter for opp to make next move")
+        confirm_next_move = input("Press enter for opp to make next move")
         try:
             opponent1.make_move(b)
             if b.is_game_over():
@@ -65,8 +65,8 @@ def game_loop(b, opponent, opponent1):
 if __name__ == '__main__':
     b = Board.Board()
 
-    # opp1_heur = MaterialAdvantage.MaterialAdvantage(b)
-    opp1_heur = SpaceAdvantage.SpaceAdvantage(b)
+    opp1_heur = MaterialAdvantage.MaterialAdvantage(b)
+    # opp1_heur = SpaceAdvantage.SpaceAdvantage(b)
     # opp1_heur = NumberOfChecks.NumberOfChecks(b)
     search_algo1 = Search.IDA_star.IDA_star(node_expansion=None, heuristic=opp1_heur, depth=1)
     # search_algo1 = Search.RandomMove.RandomMove()
